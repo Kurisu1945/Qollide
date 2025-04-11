@@ -13,8 +13,9 @@
     align-items: flex-start;
 }
 
-.journals_sidebar {
-    width: 260px;
+/* Sidebar kiri: HTML journal links */
+.html_journal_list {
+    width: 250px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 0.5rem;
@@ -24,8 +25,32 @@
     flex-shrink: 0;
 }
 
-.html_journal_list {
-    margin-right: 0;
+.html_journal_item {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.html_journal_item:hover {
+    background-color: #e0e0e0;
+}
+
+/* Sidebar tengah: LocalStorage journals */
+#journal_list {
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 70vh;
+    flex-shrink: 0;
 }
 
 .journal_list_item {
@@ -45,6 +70,7 @@
     background-color: #d0d0d0;
 }
 
+/* Preview kanan */
 .journal_preview {
     flex-grow: 1;
     background-color: #fff;
@@ -77,6 +103,7 @@
     word-wrap: break-word;
 }
 
+/* Tombol hapus */
 .delete_button {
     margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
