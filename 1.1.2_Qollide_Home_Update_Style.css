@@ -1,11 +1,11 @@
-.update_journals {
+.update_notes {
     display: flex;
     justify-content: center;
     padding: 2rem;
     background-color: #fafafa;
 }
 
-.journals_container {
+.notes_container {
     display: flex;
     gap: 2rem;
     width: 100%;
@@ -13,7 +13,7 @@
     align-items: flex-start;
 }
 
-.html_journal_list {
+.html_note_list {
     width: 250px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -24,7 +24,7 @@
     flex-shrink: 0;
 }
 
-.html_journal_item {
+.html_note_item {
     padding: 0.75rem 1rem;
     margin-bottom: 0.5rem;
     background-color: #f0f0f0;
@@ -36,11 +36,11 @@
     display: block;
 }
 
-.html_journal_item:hover {
+.html_note_item:hover {
     background-color: #e0e0e0;
 }
 
-#journal_list {
+#note_list {
     width: 250px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -51,7 +51,7 @@
     flex-shrink: 0;
 }
 
-.journal_list_item {
+.note_list_item {
     padding: 0.75rem 1rem;
     margin-bottom: 0.5rem;
     background-color: #f0f0f0;
@@ -60,15 +60,15 @@
     transition: background-color 0.2s ease;
 }
 
-.journal_list_item:hover {
+.note_list_item:hover {
     background-color: #e0e0e0;
 }
 
-.journal_list_item.active {
+.note_list_item.active {
     background-color: #d0d0d0;
 }
 
-.journal_preview {
+.note_preview {
     flex-grow: 1;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -79,19 +79,19 @@
     max-width: 100%;
 }
 
-.journal_preview h2 {
+.note_preview h2 {
     font-size: 1.75rem;
     margin-bottom: 0.5rem;
     color: #222;
 }
 
-.journal_preview .meta {
+.note_preview .meta {
     font-size: 0.95rem;
     color: #777;
     margin-bottom: 1rem;
 }
 
-.journal_preview .content {
+.note_preview .content {
     font-size: 1rem;
     line-height: 1.6;
     color: #333;
@@ -100,9 +100,9 @@
     word-wrap: break-word;
 }
 
-.journal_preview p,
-.journal_preview ul,
-.journal_preview ol {
+.note_preview p,
+.note_preview ul,
+.note_preview ol {
     margin-bottom: 1rem;
 }
 
