@@ -13,7 +13,6 @@
     align-items: flex-start;
 }
 
-/* Sidebar kiri: HTML journal links */
 .html_journal_list {
     width: 250px;
     background-color: #fff;
@@ -41,7 +40,6 @@
     background-color: #e0e0e0;
 }
 
-/* Sidebar tengah: LocalStorage journals */
 #journal_list {
     width: 250px;
     background-color: #fff;
@@ -70,7 +68,6 @@
     background-color: #d0d0d0;
 }
 
-/* Preview kanan */
 .journal_preview {
     flex-grow: 1;
     background-color: #fff;
@@ -103,7 +100,12 @@
     word-wrap: break-word;
 }
 
-/* Tombol hapus */
+.journal_preview p,
+.journal_preview ul,
+.journal_preview ol {
+    margin-bottom: 1rem;
+}
+
 .delete_button {
     margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
