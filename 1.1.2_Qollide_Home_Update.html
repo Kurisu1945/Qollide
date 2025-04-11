@@ -36,16 +36,19 @@
 
     <main class="update_journals">
         <section class="journals_container">
-            <aside class="journals_sidebar html_journal_list" id="html_journal_list">
-                <div class="journal_list_item" onclick="showHtmlJournal('The Qollide Vision', '2025-04-01', 'Team 6', 'Qollide empowers collaboration across creative disciplines.')">
-                    The Qollide Vision
-                </div>
-                <div class="journal_list_item" onclick="showHtmlJournal('Digital Reflections', '2025-04-05', 'A. Sutanto', 'Exploring how digital tools influence our creative process.')">
-                    Digital Reflections
+
+            <!-- KIRI: Link ke file HTML eksternal -->
+            <aside class="journals_sidebar html_journal_list">
+                <h3>HTML Journals</h3>
+                <div class="journal_list_item">
+                    <a href="Update_09.04.2025.html" target="_blank" style="text-decoration: none; color: inherit;">Update 09/04/2025</a>
                 </div>
             </aside>
 
-            <aside class="journals_sidebar" id="journal_list"></aside>
+            <!-- KANAN: Jurnal dari Local Storage -->
+            <aside class="journals_sidebar" id="journal_list">
+                <h3>Local Journals</h3>
+            </aside>
 
             <article class="journal_preview" id="journal_preview">
                 <h2>Select a Journal</h2>
@@ -81,7 +84,7 @@
         const deleteButton = document.querySelector(".delete_button");
 
         function renderList() {
-            listContainer.innerHTML = "";
+            listContainer.innerHTML = "<h3>Local Journals</h3>";
             journals.forEach((journal, index) => {
                 const item = document.createElement("div");
                 item.className = "journal_list_item";
@@ -113,14 +116,6 @@
                 localStorage.setItem("qollide_journals", JSON.stringify(journals));
                 renderList();
             }
-        }
-
-        function showHtmlJournal(title, date, author, content) {
-            document.querySelectorAll(".journal_list_item").forEach(el => el.classList.remove("active"));
-            previewTitle.textContent = title;
-            previewMeta.textContent = `${date} · ${author}`;
-            previewContent.textContent = content;
-            deleteButton.style.display = "none";
         }
 
         renderList();
