@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update – Qollide</title>
+    <link rel="stylesheet" href="CSS/1A_Base_Style_Reset_Font.css">
+    <link rel="stylesheet" href="CSS/1B_Base_Style_Header_Navigation.css">
+    <link rel="stylesheet" href="CSS/1C_Base_Style_Main_Content.css">
+    <link rel="stylesheet" href="CSS/1D_Base_Style_Footer.css">
+    <link rel="stylesheet" href="CSS/1E_Base_Style_Responsive.css">
+    <link rel="stylesheet" href="CSS/1.1.2_Qollide_Home_Update_Style.css" />
+    <style>
+        .delete_button {
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete_button:hover {
+            background-color: #c9302c;
+        }
+
+        .journal_list_item.active {
+            background-color: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header_navigation-bar">
+        <div class="header_logo">
+            <img src="Assets/Images/Qollide_Image_Logo.png" alt="Qollide Logo" class="logo_image" />
+            <h1><a href="index.html">Qollide</a></h1>
+        </div>
+        <nav>
+            <ul class="navigation-bar_links">
+                <li>
+                    <a href="#">Home</a>
+                    <ul class="navigation-bar_submenu">
+                        <li><a href="1.1.1_Qollide_Home_Create.html">Create</a></li>
+                        <li><a href="1.1.2_Qollide_Home_Update.html">Update</a></li>
+                        <li><a href="#">Features</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="update_journals">
+        <section class="journals_container">
+            <aside class="journals_sidebar" id="journal_list"></aside>
+            <article class="journal_preview" id="journal_preview">
+                <h2>Select a Journal</h2>
+                <p class="meta"></p>
+                <p class="content"></p>
+                <button class="delete_button" style="display: none;">Delete Journal</button>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer_section">
+        <div class="footer_top">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer_bottom">
+            <div class="footer_brand">
+                <img src="Assets/Images/Qollide_Image_Logo.png" alt="Qollide Logo" class="footer_logo" />
+                <span>Qollide</span>
+            </div>
+            <p class="footer_copyright">
+                &copy; 2025 Qollide. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let journals = JSON.parse(localStorage.getItem("qollide_journals")) || [];
+        const listContainer = document.getElementById("journal_list");
+        const previewTitle = document.querySelector(".journal_preview h2");
+        const previewMeta = document.querySelector(".journal_preview .meta");
+        const previewContent = document.querySelector(".journal_preview .content");
+        const deleteButton = document.querySelector(".delete_button");
+
+        function renderList() {
+            listContainer.innerHTML = "";
+            journals.forEach((journal, index) => {
+                const item = document.createElement("div");
+                item.className = "journal_list_item";
+                item.textContent = journal.title;
+                item.onclick = () => {
+                    document.querySelectorAll(".journal_list_item").forEach(el => el.classList.remove("active"));
+                    item.classList.add("active");
+
+                    previewTitle.textContent = journal.title;
+                    previewMeta.textContent = `${journal.date} · ${journal.author}`;
+                    previewContent.textContent = journal.content;
+                    deleteButton.style.display = "inline-block";
+                    deleteButton.onclick = () => deleteJournal(index);
+                };
+                listContainer.appendChild(item);
+            });
+
+            if (journals.length === 0) {
+                previewTitle.textContent = "Select a Journal";
+                previewMeta.textContent = "";
+                previewContent.textContent = "";
+                deleteButton.style.display = "none";
+            }
+        }
+
+        function deleteJournal(index) {
+            if (confirm("Are you sure you want to delete this journal?")) {
+                journals.splice(index, 1);
+                localStorage.setItem("qollide_journals", JSON.stringify(journals));
+                renderList();
+            }
+        }
+
+        renderList();
+    </script>
+</body>
+</html>

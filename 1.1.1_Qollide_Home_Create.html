@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create – Qollide</title>
+    <link rel="stylesheet" href="CSS/1A_Base_Style_Reset_Font.css">
+    <link rel="stylesheet" href="CSS/1B_Base_Style_Header_Navigation.css">
+    <link rel="stylesheet" href="CSS/1C_Base_Style_Main_Content.css">
+    <link rel="stylesheet" href="CSS/1D_Base_Style_Footer.css">
+    <link rel="stylesheet" href="CSS/1E_Base_Style_Responsive.css">
+    <link rel="stylesheet" href="CSS/1.1.1_Qollide_Home_Create_Style.css" />
+</head>
+<body>
+    <header class="header_navigation-bar">
+        <div class="header_logo">
+            <img src="Assets/Images/Qollide_Image_Logo.png" alt="Qollide Logo" class="logo_image" />
+            <h1><a href="index.html">Qollide</a></h1>
+        </div>
+        <nav>
+            <ul class="navigation-bar_links">
+                <li>
+                    <a href="#">Home</a>
+                    <ul class="navigation-bar_submenu">
+                        <li><a href="1.1.1_Qollide_Home_Create.html">Create</a></li>
+                        <li><a href="1.1.2_Qollide_Home_Update.html">Update</a></li>
+                        <li><a href="#">Features</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="create_journal">
+        <section class="create_journal_form">
+            <h2>Create Your Journal</h2>
+            <form oninput="updatePreview()">
+                <div class="form_group">
+                    <label for="journal_title">Title</label>
+                    <input type="text" id="journal_title" name="journal_title" placeholder="Enter your journal title" required />
+                </div>
+
+                <div class="form_group">
+                    <label for="journal_date">Date</label>
+                    <input type="date" id="journal_date" name="journal_date" required />
+                </div>
+
+                <div class="form_group">
+                    <label for="journal_author">Author</label>
+                    <input type="text" id="journal_author" name="journal_author" placeholder="Your name" required />
+                </div>
+
+                <div class="form_group">
+                    <label for="journal_content">Journal Content</label>
+                    <textarea id="journal_content" name="journal_content" rows="8" placeholder="Write your thoughts here..." required></textarea>
+                </div>
+
+                <div class="form_group">
+                    <button type="submit" class="submit_button">Save Journal</button>
+                </div>
+            </form>
+
+            <section class="journal_preview">
+                <h3>Preview</h3>
+                <div class="preview_box">
+                    <h4 id="preview_title">Title will appear here</h4>
+                    <p id="preview_meta">Date · Author</p>
+                    <p id="preview_content">Start writing to see your journal preview...</p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer_section">
+        <div class="footer_top">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer_bottom">
+            <div class="footer_brand">
+                <img src="Assets/Images/Qollide_Image_Logo.png" alt="Qollide Logo" class="footer_logo" />
+                <span>Qollide</span>
+            </div>
+            <p class="footer_copyright">
+                &copy; 2025 Qollide. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function updatePreview() {
+            const title = document.getElementById('journal_title').value;
+            const date = document.getElementById('journal_date').value;
+            const author = document.getElementById('journal_author').value;
+            const content = document.getElementById('journal_content').value;
+
+            document.getElementById('preview_title').textContent = title || "Title will appear here";
+            document.getElementById('preview_meta').textContent = `${date || "Date"} · ${author || "Author"}`;
+            document.getElementById('preview_content').textContent = content || "Start writing to see your journal preview...";
+        }
+
+        function saveJournal(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('journal_title').value;
+            const date = document.getElementById('journal_date').value;
+            const author = document.getElementById('journal_author').value;
+            const content = document.getElementById('journal_content').value;
+
+            const journal = {
+                title,
+                date,
+                author,
+                content
+            };
+
+            const savedJournals = JSON.parse(localStorage.getItem('qollide_journals')) || [];
+            savedJournals.push(journal);
+            localStorage.setItem('qollide_journals', JSON.stringify(savedJournals));
+
+            alert('Journal saved locally!');
+            document.querySelector('form').reset();
+            updatePreview();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector("form").addEventListener("submit", saveJournal);
+        });
+    </script>
+</body>
+</html>

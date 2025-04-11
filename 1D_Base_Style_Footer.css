@@ -1,0 +1,57 @@
+.credit_text {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.footer_section {
+    background-color: #e5e5e5;
+    padding: 2rem;
+    color: #222;
+    font-size: 0.9rem;
+}
+
+.footer_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.footer_top a {
+    color: #222;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: normal;
+}
+
+.footer_top a:hover {
+    color: #555;
+}
+
+.footer_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer_brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.footer_logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.footer_bottom p {
+    font-size: 0.85rem;
+    color: #444;
+    text-align: right;
+}
