@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Louis George Cafe';
-    src: url('../Assets/Fonts/LouisGeorgeCafe.ttf') format('truetype');
+    src: url('LouisGeorgeCafe.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Louis George Cafe';
-    src: url('../Assets/Fonts/LouisGeorgeCafe_Bold.ttf') format('truetype');
+    src: url('LouisGeorgeCafe_Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
