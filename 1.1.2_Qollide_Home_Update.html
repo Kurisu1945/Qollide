@@ -10,28 +10,6 @@
     <link rel="stylesheet" href="1D_Base_Style_Footer.css">
     <link rel="stylesheet" href="1E_Base_Style_Responsive.css">
     <link rel="stylesheet" href="1.1.2_Qollide_Home_Update_Style.css" />
-    <style>
-        .delete_button {
-            margin-top: 1.5rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            font-weight: bold;
-            background-color: #d9534f;
-            color: #fff;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .delete_button:hover {
-            background-color: #c9302c;
-        }
-
-        .journal_list_item.active {
-            background-color: #d0d0d0;
-        }
-    </style>
 </head>
 <body>
     <header class="header_navigation-bar">
@@ -58,7 +36,17 @@
 
     <main class="update_journals">
         <section class="journals_container">
+            <aside class="journals_sidebar html_journal_list" id="html_journal_list">
+                <div class="journal_list_item" onclick="showHtmlJournal('The Qollide Vision', '2025-04-01', 'Team 6', 'Qollide empowers collaboration across creative disciplines.')">
+                    The Qollide Vision
+                </div>
+                <div class="journal_list_item" onclick="showHtmlJournal('Digital Reflections', '2025-04-05', 'A. Sutanto', 'Exploring how digital tools influence our creative process.')">
+                    Digital Reflections
+                </div>
+            </aside>
+
             <aside class="journals_sidebar" id="journal_list"></aside>
+
             <article class="journal_preview" id="journal_preview">
                 <h2>Select a Journal</h2>
                 <p class="meta"></p>
@@ -125,6 +113,14 @@
                 localStorage.setItem("qollide_journals", JSON.stringify(journals));
                 renderList();
             }
+        }
+
+        function showHtmlJournal(title, date, author, content) {
+            document.querySelectorAll(".journal_list_item").forEach(el => el.classList.remove("active"));
+            previewTitle.textContent = title;
+            previewMeta.textContent = `${date} · ${author}`;
+            previewContent.textContent = content;
+            deleteButton.style.display = "none";
         }
 
         renderList();
